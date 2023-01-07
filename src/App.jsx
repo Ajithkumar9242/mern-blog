@@ -1,14 +1,39 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
+
 import Topbar from './components/topbar/Topbar'
 import Home from './pages/Home'
+import Login from './pages/Login/Login'
+import Register from './pages/register/Register'
 import Single from './pages/single/Single'
+import Write from './pages/write/Write'
 
 function App() {
+
+  const user = true;
   return (
-    <div>
+    <Router>
       <Topbar />
-      <Single />
-    </div>
+        <Routes >
+          <Route path='/' element={<Home />} />
+
+          <Route path='/register' element={user ? <Home /> : <Register />} />
+
+          <Route path='/login' element={user ? <Home /> : <Login />} />
+
+          <Route path='/write' element={user ?<Write /> : <Register /> } />
+
+          <Route path='/post:postId' element={<Single />} >
+
+            
+          </Route>
+        </Routes>
+    </Router>
   )
 }
 
