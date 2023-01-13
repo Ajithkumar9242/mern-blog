@@ -2,7 +2,7 @@ import { React , useState, useEffect} from 'react'
 import axios from 'axios'
 import Header from '../components/header/Header'
 import Posts from '../components/posts/Posts'
-import Sidebar from '../components/sidebar/Sidebar'
+
 import './Home.css'
 
 function Home() {
@@ -25,7 +25,7 @@ function Home() {
         <Header />
         <div className="home">
           <Posts posts={posts}/>
-          <Sidebar />
+  
         </div>
     </>
   )

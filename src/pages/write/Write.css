@@ -45,6 +45,7 @@
 }
 
 .writeSubmit{
+    cursor: pointer;
         position: absolute;
         left: 12%;
         top: 110%;

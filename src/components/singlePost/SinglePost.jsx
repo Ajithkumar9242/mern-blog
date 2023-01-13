@@ -26,6 +26,8 @@ function SinglePost() {
     const getPost = async () =>{
       const res = await axios.get("/api/posts/" + path)
       setPost(res.data)
+      setTitle(res.data.title)
+      setDesc(res.data.desc)
     }
     getPost()
   }, [path])
@@ -40,6 +42,20 @@ function SinglePost() {
     }
   }
 
+  const handleUpdate = async () =>{
+    try {
+      await axios.put(`/api/posts/${post._id}` , 
+         {username: user.username,
+        title,desc
+        
+      })
+      window.location.replace("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   return (
     <div className='singlePost'>
         <div className="singlePostWrapper">
@@ -48,16 +64,23 @@ function SinglePost() {
 
       )}
 
+      {
+        updateMode ? <input type="text" name="text" value={title} className="singlePostTitleInput" onChange={(e) => setTitle(e.target.value)}/> : (
+
+       
+
           <h1 className="singlePostTitle">
           {post.title}
           {post.username === user.username && (
 
             <div className="singlePostEdit">
-              <i className='fas fa-edit'></i>
+              <i className='fas fa-edit' onClick={() => setUpdateMode(true)}></i>
               <i className='fas fa-trash-alt' onClick={handleDelete}></i>
             </div>
               )}
           </h1>
+           )
+          }
         <div className="singlePostInfo">
         <span className="singlePostAuthor">
             Author:
@@ -69,11 +92,21 @@ function SinglePost() {
           {new Date(post.createdAt).toDateString()}
           </span>
         </div>
+        {
+          updateMode ? <textarea className='singlePostDescInput' value={desc} onChange={(e) => setDesc(e.target.value)}></textarea> : (
+
+          
         <p className='singlePostDesc'>
         {post.desc}  
           </p>
-        </div>
+          )
+        }
 
+        {
+      updateMode && <button type="submit" className='update' onClick={handleUpdate}>Update</button>
+        }
+
+        </div>
     </div>
   )
 }
