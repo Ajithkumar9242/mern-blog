@@ -29,6 +29,9 @@
     margin-left: 10px;
     cursor: pointer;
 }
+i{
+    cursor: pointer;
+}
 
 .singlePostInfo{
     margin-bottom: 20px;

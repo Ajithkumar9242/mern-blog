@@ -1,9 +1,13 @@
-import React from 'react'
+import { React, useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { Context } from '../../context/Context'
 import "./Topbar.css"
 
 function Topbar() {
-  const user = true
+const { user, dispatch } = useContext(Context)
+const handleLogout = () =>{
+  dispatch({type:"LOGOUT"})
+}
   return (
     <div className='top'>
         <div className="topLeft"></div>
@@ -15,18 +19,19 @@ function Topbar() {
              <li className="topListItem">
              <Link to="/">ABOUT</Link></li>
              <li className="topListItem">
-             <Link to="/">CONTTACT</Link></li>
+             <Link to="/">CONTACT</Link></li>
              <li className="topListItem">
              <Link to="/write">POST</Link></li>
-             <li className="topListItem">
-             { user && "LOGOUT" }
-             </li>
+             <li className="topListItem" onClick={handleLogout}>
+             { user && "LOGOUT" }</li>
+             
           </ul>
         </div>
         <div className="topRight">
+        
         {
           user ? (
-            <img src="https://images.unsplash.com/photo-1672173038243-757b40f749df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Nature Img" className='topImg'/>
+            <img src={user.profilePic} alt="Nature Img" className='topImg'/>
 
           ) : (
             <ul className='topList'>
@@ -42,7 +47,7 @@ function Topbar() {
         }
 
 
-          <i className="fa-solid fa-magnifying-glass"></i>
+          <i className="fas-solid fa-magnifying-glass"></i>
         </div>
     </div>
   )
