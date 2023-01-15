@@ -13,6 +13,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/register/Register'
 import Single from './pages/single/Single'
 import Write from './pages/write/Write'
+import Contact from './pages/contact/Contact';
 
 function App() {
 const { user } = useContext(Context)
@@ -25,6 +26,9 @@ const { user } = useContext(Context)
           <Route path='/register' element={user ? <Home /> : <Register />}/>
 
           <Route path='/login' element={user ? <Home /> : <Login />} />
+
+          <Route path='/contact' element={ <Contact />} />
+
 
           <Route path='/write' element={user ?<Write /> : <Register />} />
 

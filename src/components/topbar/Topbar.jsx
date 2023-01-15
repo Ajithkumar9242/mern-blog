@@ -19,7 +19,7 @@ const handleLogout = () =>{
              <li className="topListItem">
              <Link to="/">ABOUT</Link></li>
              <li className="topListItem">
-             <Link to="/">CONTACT</Link></li>
+             <Link to="/contact">CONTACT</Link></li>
              <li className="topListItem">
              <Link to="/write">POST</Link></li>
              <li className="topListItem" onClick={handleLogout}>
@@ -31,7 +31,7 @@ const handleLogout = () =>{
         
         {
           user ? (
-            <img src={user.profilePic} alt="Nature Img" className='topImg'/>
+            <span className='topImg'>{user.username}</span>
 
           ) : (
             <ul className='topList'>
