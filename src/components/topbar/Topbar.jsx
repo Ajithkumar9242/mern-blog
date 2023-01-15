@@ -17,8 +17,6 @@ const handleLogout = () =>{
               <Link to="/">HOME</Link>
              </li>
              <li className="topListItem">
-             <Link to="/">ABOUT</Link></li>
-             <li className="topListItem">
              <Link to="/contact">CONTACT</Link></li>
              <li className="topListItem">
              <Link to="/write">POST</Link></li>
